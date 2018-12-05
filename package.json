@@ -1,0 +1,22 @@
+{
+  "name": "minesweeper-challenge",
+  "version": "1.0.0",
+  "description": "Minesweeper game using nodejs and terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlosvallejo/minesweeper-challenge.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "karlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karlosvallejo/minesweeper-challenge/issues"
+  },
+  "homepage": "https://github.com/karlosvallejo/minesweeper-challenge#readme"
+}
