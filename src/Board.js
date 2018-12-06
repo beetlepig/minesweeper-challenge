@@ -5,15 +5,16 @@ class Board {
 		this.height = gameConfiguration.height;
 		this.minesNumber = gameConfiguration.minesNumber;
 		this.totalSpacesNumber = this.width * this.height;
+		// this index represents the 8 positions that surrounds a space, first number is column and the second is row
 		this.indexOfSurroundingSpaces = [
-			{row: -1, col: -1},
-			{row: -1, col: 0},
-			{row: -1, col: 1},
-			{row: 0, col: -1},
-			{row: 0, col: 1},
-			{row: 1, col: -1},
-			{row: 1, col: 0},
-			{row: 1, col: 1},
+			[0, 1],			// Top position
+			[1, 1],			// Upper Right position
+			[1, 0],			// Right position
+			[1, -1],		// Bottom Right position
+			[0, -1],		// Bottom position
+			[-1, -1],		// Bottom Left position
+			[-1, 0],		// Left position
+			[-1, 1],		// Top Left position
 		];
 		this.bomb = '*';
 		this.mineBoard = this.placeMinesAndNumbersOnBoard();
@@ -69,8 +70,8 @@ class Board {
 
 				// Iterate over 8 surround squares
 				this.indexOfSurroundingSpaces.forEach(relIndex => {
-					let rowToCheck = row + relIndex.row;
-					let colToCheck = column + relIndex.col;
+					let colToCheck = column + relIndex[0];
+					let rowToCheck = row + relIndex[1];
 					// If the space to check is out of bounds (outside the board), continue to the next iteration
 					if (!this.theSpaceIsInBounds(rowToCheck, colToCheck)) return;
 					// if in the space to check are a bomb, increment the counter
