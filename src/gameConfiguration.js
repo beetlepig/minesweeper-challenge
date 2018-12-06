@@ -47,7 +47,7 @@ function promptForBoardHeight(width, rl) {
 }
 
 function promptForMinesNumber(width, height, rl) {
-	const maxMinesNumber = Math.floor((width * height) * 0.6);
+	const maxMinesNumber = Math.floor((width * height) * 0.15);
 	return new Promise((resolve, reject) => {
 		process.stdout.write('\u001B[2J\u001B[0;0f');
 		process.stdout.write( `Columns: ${width}  Rows: ${height}\n`);
