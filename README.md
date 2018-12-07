@@ -2,17 +2,22 @@
 A console version of the game written in Javascript under Nodejs.
 
 ## Run instructions
+
     Install Nodejs 10.x
 
-    Clone the repo ``` https://github.com/karlosvallejo/minesweeper-challenge.git ```
+    Clone the repo 
+``` 
+https://github.com/karlosvallejo/minesweeper-challenge.git 
+```
     
     On a terminal window, type 
-     ``` 
-     cd minesweeper-challenge
-     npm start
-     ```
+``` 
+cd minesweeper-challenge
+npm start
+```
     Or
-     ``` 
-     cd minesweeper-challenge/src
-     node index.js
-     ```
+    
+``` 
+cd minesweeper-challenge/src
+node index.js
+```
