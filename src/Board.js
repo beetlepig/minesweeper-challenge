@@ -288,7 +288,7 @@ class Board {
 		this.gameOver = 'winner';
 		this.printViewBoardToConsole();
 	}
-	
+
 }
 
 module.exports = {
