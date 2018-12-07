@@ -1,5 +1,6 @@
 const readLine = require('readline');
 const { askForInitialParameters } = require('./gameConfiguration');
+const { clearConsole } = require('./static');
 const { Game } = require('./Game');
 let gameInstance;
 
@@ -28,7 +29,7 @@ function init() {
 function listenForUserSubmit (gameConfiguration) {
 
 	rl.on('line', (command) => {
-		process.stdout.write('\u001B[2J\u001B[0;0f');
+		clearConsole();
 
 		checkUserCommand(gameConfiguration, command).then((f) => {
 			const {message, commandFixed} = f;
@@ -36,6 +37,9 @@ function listenForUserSubmit (gameConfiguration) {
 			gameInstance.interpretCommand(commandFixed);
 		}).catch((r) => {
 			process.stdout.write( `${r}\n`);
+			setTimeout( () => {
+				gameInstance.reDrawBoard();
+			}, 2000);
 		});
 
 	});
@@ -58,7 +62,7 @@ function checkUserCommand(gameConfiguration, command) {
 		const commandFixedString = commandFixedArray.toString();
 
 		if (commandPattern.test(commandFixedString)) {
-			if (commandFixedArray[0] > width || commandFixedArray[1] > height) {
+			if (commandFixedArray[0] > width -1 || commandFixedArray[1] > height -1) {
 				reject('invalid coordinates');
 			} else {
 				resolve({message: 'valid command', commandFixed: commandFixedArray});

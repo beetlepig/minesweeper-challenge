@@ -1,3 +1,4 @@
+const { clearConsole } = require('./static');
 async function askForInitialParameters(rl) {
 	let width = 5, height = 5, minesNumber = 5;
 	try {
@@ -20,7 +21,7 @@ async function askForInitialParameters(rl) {
 
 function promptForBoardWidth(rl) {
 	return new Promise((resolve, reject) => {
-		process.stdout.write('\u001B[2J\u001B[0;0f');
+		clearConsole();
 		process.stdout.write('This is the Karlos version of Minesweeper, running in Nodejs \n');
 		rl.question('How many Columns do you want the board to have? Type a number between 5 and 15\n', answer => {
 			if (answer >= 5 && answer <= 15) {
@@ -34,7 +35,7 @@ function promptForBoardWidth(rl) {
 
 function promptForBoardHeight(width, rl) {
 	return new Promise((resolve, reject) => {
-		process.stdout.write('\u001B[2J\u001B[0;0f');
+		clearConsole();
 		process.stdout.write( `Columns: ${width}\n`);
 		rl.question('How many Rows do you want the board to have? Type a number between 5 and 15\n', answer => {
 			if (answer >= 5 && answer <= 15) {
@@ -49,7 +50,7 @@ function promptForBoardHeight(width, rl) {
 function promptForMinesNumber(width, height, rl) {
 	const maxMinesNumber = Math.floor((width * height) * 0.15);
 	return new Promise((resolve, reject) => {
-		process.stdout.write('\u001B[2J\u001B[0;0f');
+		clearConsole();
 		process.stdout.write( `Columns: ${width}  Rows: ${height}\n`);
 		rl.question(`How many Mines do you want the board to have? Type a number between 1 and ${maxMinesNumber}\n`, answer => {
 			if (answer >= 1 && answer <= maxMinesNumber) {
