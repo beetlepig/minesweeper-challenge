@@ -9,6 +9,7 @@ class Board {
 		this.totalSpacesNumber = this.width * this.height;
 		this.uncoveredCount = 0;
 		this.correctPlacedFlags = 0;
+		this.worngPlacedFlags = 0;
 		this.winningUncoveredCount = this.totalSpacesNumber - this.minesNumber;
 		this.gameOver = null;
 		// this index represents the 8 positions that surrounds a space, first number is column and the second is row
@@ -153,6 +154,8 @@ class Board {
 
 			if (this.checkMarkValidity(columnNumber, rowNumber)) {
 				this.correctPlacedFlags++;
+			} else {
+				this.worngPlacedFlags++;
 			}
 		} else if (this.viewBoard[rowNumber][columnNumber] === this.flag) {
 			// If marked, unmark it
@@ -160,6 +163,8 @@ class Board {
 
 			if (this.checkMarkValidity(columnNumber, rowNumber)) {
 				this.correctPlacedFlags--;
+			} else {
+				this.worngPlacedFlags--;
 			}
 
 		}
@@ -250,7 +255,7 @@ class Board {
 	checkForWinGame() {
 		if (this.uncoveredCount >= this.winningUncoveredCount) {
 			this.winGame();
-		} else if (this.correctPlacedFlags >= this.minesNumber) {
+		} else if (this.correctPlacedFlags >= this.minesNumber && this.worngPlacedFlags === 0) {
 			this.winGame();
 		}
 	}
