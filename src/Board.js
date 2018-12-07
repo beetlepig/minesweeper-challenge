@@ -178,6 +178,7 @@ class Board {
 	uncoverSpace(columnNumber, rowNumber) {
 		// Do not uncover marked spaces
 		if (this.isSpaceMarked(columnNumber, rowNumber)) {
+			this.printViewBoardToConsole();
 			return;
 		}
 
